@@ -49,7 +49,7 @@
             100% { opacity: 0; transform: scale(0.95); }
         }
         
-        /* Interactive Cursor Glow */
+        /* --- MODIFIED CURSOR GLOW STYLES --- */
         #cursor-glow {
             position: fixed;
             width: 400px;
@@ -58,9 +58,17 @@
             background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%);
             pointer-events: none;
             z-index: 999;
-            transform: translate(-50%, -50%);
-            transition: left 0.1s ease-out, top 0.1s ease-out;
-            display: none; /* Initially hidden */
+            /* Set initial scale and update transition to include transform for the bubble effect */
+            transform: translate(-50%, -50%) scale(1);
+            transition: left 0.1s ease-out, 
+                        top 0.1s ease-out, 
+                        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none; 
+        }
+
+        /* This new class will be added on click/touch to create the bubble effect */
+        #cursor-glow.active {
+            transform: translate(-50%, -50%) scale(1.4);
         }
 
         .text-gradient-logo {
@@ -342,15 +350,38 @@
             }, 2000); 
 
             const cursorGlow = document.getElementById('cursor-glow');
+
+            // --- JAVASCRIPT FOR BUBBLE EFFECT START ---
+            // Function to add the active class to the glow
+            function activateGlow() {
+                cursorGlow.classList.add('active');
+            }
+            // Function to remove the active class from the glow
+            function deactivateGlow() {
+                cursorGlow.classList.remove('active');
+            }
+            
+            // Add listeners for mouse clicks and touch events
+            window.addEventListener('mousedown', activateGlow);
+            window.addEventListener('mouseup', deactivateGlow);
+            window.addEventListener('touchstart', activateGlow, { passive: true });
+            window.addEventListener('touchend', deactivateGlow);
+            // --- JAVASCRIPT FOR BUBBLE EFFECT END ---
+
             function updateGlowPosition(e) {
-                const x = e.touches ? e.touches[0].clientX : e.clientX;
-                const y = e.touches ? e.touches[0].clientY : e.clientY;
+                // Check if e.touches exists and has items for touch events
+                const x = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+                const y = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+
+                // This check prevents errors when touch ends and clientX/Y are undefined
+                if (x === undefined || y === undefined) return;
+
                 cursorGlow.style.display = 'block';
                 cursorGlow.style.left = x + 'px';
                 cursorGlow.style.top = y + 'px';
             }
             window.addEventListener('mousemove', updateGlowPosition);
-            window.addEventListener('touchmove', updateGlowPosition);
+            window.addEventListener('touchmove', updateGlowPosition, { passive: true });
             
             const scrollElements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
@@ -379,7 +410,6 @@
                 header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
             });
             
-            // --- CORRECTED CONTACT FORM SCRIPT ---
             const form = document.getElementById('contact-form');
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); 
@@ -388,14 +418,12 @@
                 const email = form.querySelector('input[name="email"]').value;
                 const message = form.querySelector('textarea[name="message"]').value;
                 
-                // **FIXED THE TYPO HERE**
                 const phoneNumber = '918839189226';
 
                 const prefilledMessage = `Hello GraphixLab Media!\n\nI got your number from the website and would like to inquire about your services.\n\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`;
 
                 const encodedMessage = encodeURIComponent(prefilledMessage);
 
-                // This now uses the correct 'phoneNumber' variable
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
                 window.open(whatsappUrl, '_blank');
