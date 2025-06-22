@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GraphixLab Media - Your Social Media Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A0216;
+            color: #E0E0E0;
+            overflow-x: hidden;
+        }
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0A0216;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .loader-text {
+            font-size: clamp(2rem, 10vw, 5rem);
+            font-weight: 900;
+            color: white;
+            opacity: 0;
+            animation: textPulse 2s ease-in-out forwards;
+        }
+
+        @keyframes textPulse {
+            0% { opacity: 0; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1.05); }
+            100% { opacity: 0; transform: scale(0.95); }
+        }
+        
+        /* Interactive Cursor Glow */
+        #cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%);
+            pointer-events: none;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: left 0.1s ease-out, top 0.1s ease-out;
+        }
+
+        .text-gradient-logo {
+            background: linear-gradient(120deg, #3b82f6, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-bg {
+            background-color: rgba(26, 17, 51, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Headline Animation */
+        .headline-line {
+            display: block;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .headline-line.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll Animations (Pop-like effect) */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <div id="cursor-glow"></div>
+    <div id="preloader">
+        <div class="loader-text">GraphixLab Media</div>
+    </div>
+
+    <div class="relative min-h-screen">
+        
+        <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+            <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+                <a href="#" class="text-white text-xl sm:text-2xl font-bold tracking-tight">GraphixLab Media</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+                    <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
+                    <a href="#why-us" class="hover:text-purple-400 transition-colors">Why Us</a>
+                    <a href="#pricing" class="hover:text-purple-400 transition-colors">Pricing</a>
+                </div>
+                <a href="#contact" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-500 transition-all transform hover:scale-105">Contact Us</a>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </nav>
+        </header>
+
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
+                <a href="#about" class="mobile-link hover:text-purple-400 transition-colors">About</a>
+                <a href="#services" class="mobile-link hover:text-purple-400 transition-colors">Services</a>
+                <a href="#why-us" class="mobile-link hover:text-purple-400 transition-colors">Why Us</a>
+                <a href="#pricing" class="mobile-link hover:text-purple-400 transition-colors">Pricing</a>
+                <a href="#contact" class="mobile-link hover:text-purple-400 transition-colors">Contact</a>
+            </div>
+        </div>
+
+        <main class="container mx-auto px-4 sm:px-6">
+            <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center pt-20">
+                <div class="max-w-4xl w-full">
+                    <h1 id="main-headline" class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-tight mb-4">
+                        <span class="headline-line">Visually Striking.</span>
+                        <span class="headline-line text-gradient-logo" style="transition-delay: 0.2s;">Digitally Impactful.</span>
+                    </h1>
+                    <p class="animate-on-scroll text-lg sm:text-xl md:text-2xl font-bold text-gray-200 mb-10">Your Social Media Partner</p>
+                    <div class="animate-on-scroll flex flex-col sm:flex-row justify-center items-center gap-4" style="transition-delay: 0.2s;">
+                        <a href="#pricing" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-500 transition-all text-lg transform hover:scale-105">View Packages</a>
+                        <a href="#contact" class="w-full sm:w-auto border border-purple-400 text-white font-bold py-4 px-8 rounded-lg hover:bg-purple-400/20 transition-all text-lg transform hover:scale-105">Get in Touch</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="about" class="py-16 sm:py-20">
+                 <div class="max-w-4xl mx-auto card-bg p-6 sm:p-8 md:p-12 rounded-2xl text-center animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About GraphixLab Media</h2>
+                    <p class="text-base sm:text-lg text-gray-300">
+                        GraphixLab Media is a creative digital design and marketing agency committed to transforming your brand’s vision into visually striking and impactful content. We specialize in providing high-quality, tailored solutions for startups, small businesses, and established brands looking to enhance their digital presence.
+                    </p>
+                 </div>
+            </section>
+
+            <section id="services" class="py-16 sm:py-20">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Core Services</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto">Tailored solutions to build, engage, and convert your audience.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll">
+                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="palette" class="w-8 h-8 text-white"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Graphic Design</h3>
+                        <p class="text-gray-400 flex-grow">Professional designs for posts, banners, packaging, branding, and more.</p>
+                    </div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="clapperboard" class="w-8 h-8 text-white"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Video Editing & Reels</h3>
+                        <p class="text-gray-400 flex-grow">Scroll-stopping short-form content tailored for social media platforms.</p>
+                    </div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="monitor-smartphone" class="w-8 h-8 text-white"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Website Design</h3>
+                        <p class="text-gray-400 flex-grow">Custom, fully responsive websites built for functionality and visual appeal.</p>
+                    </div>
+                     <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 0ms;">
+                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="layout-grid" class="w-8 h-8 text-white"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Social Media Management</h3>
+                        <p class="text-gray-400 flex-grow">Content creation, posting, strategy, and growth management.</p>
+                    </div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 100ms;">
+                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="shopping-bag" class="w-8 h-8 text-white"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Product Promotion</h3>
+                        <p class="text-gray-400 flex-grow">Creatives designed specifically to attract and convert potential buyers.</p>
+                    </div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="briefcase" class="w-8 h-8 text-white"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Custom Solutions</h3>
+                        <p class="text-gray-400 flex-grow">Have a unique request? We offer personalized services to meet your specific goals.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="why-us" class="py-16 sm:py-20">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Why Partner With Us?</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto">We're more than just a design agency; we're your partner in growth.</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="flex items-start space-x-4 animate-on-scroll">
+                        <i data-lucide="sparkles" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Professional, Modern Aesthetic</h3>
+                            <p class="text-gray-400">We create designs that are clean, current, and make your brand look its best.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 animate-on-scroll" style="transition-delay: 100ms;">
+                        <i data-lucide="gem" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Affordable & Tailored Packages</h3>
+                            <p class="text-gray-400">High-quality service doesn't have to break the bank. We create custom packages to fit your budget.</p>
+                        </div>
+                    </div>
+                     <div class="flex items-start space-x-4 animate-on-scroll" style="transition-delay: 200ms;">
+                         <i data-lucide="rocket" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Fast Turnaround & Revisions</h3>
+                            <p class="text-gray-400">We work efficiently to deliver your content on time, with revisions included to ensure you're happy.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 animate-on-scroll" style="transition-delay: 300ms;">
+                         <i data-lucide="messages-square" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">Personalized Support</h3>
+                            <p class="text-gray-400">You're not just another client. We offer dedicated communication and support throughout your project.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="pricing" class="py-16 sm:py-20">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Monthly Social Media Packages</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto">Transparent pricing to fit your business needs.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll">
+                        <h3 class="text-2xl font-bold text-center">Starter</h3>
+                        <p class="text-5xl font-black text-center my-4">₹1,999</p>
+                        <p class="text-center text-gray-400 mb-6">/month</p>
+                        <ul class="space-y-4 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>8 Custom Posts</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>2 Reels</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>1 Platform (IG or FB)</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Hashtag Suggestions</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Branded Templates</li>
+                        </ul>
+                        <a href="https://wa.me/918839189226?text=Hello!%20I'm%20interested%20in%20the%20Starter%20social%20media%20package." target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
+                    </div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col border-2 border-blue-500 relative transform md:scale-105 animate-on-scroll" style="transition-delay: 150ms;">
+                        <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-sm font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
+                        <h3 class="text-2xl font-bold text-center">Standard</h3>
+                        <p class="text-5xl font-black text-center my-4 text-blue-400">₹4,999</p>
+                         <p class="text-center text-gray-400 mb-6">/month</p>
+                        <ul class="space-y-4 text-gray-300 flex-grow">
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>15 Custom Posts</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>4 Reels</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>2 Platforms (IG + FB)</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Caption Writing</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Hashtag Research</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Post Scheduling</li>
+                        </ul>
+                        <a href="https://wa.me/918839189226?text=Hello!%20I'm%20interested%20in%20the%20Standard%20social%20media%20package." target="_blank" class="mt-8 block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transition-all transform hover:scale-105">Choose Plan</a>
+                    </div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-center">Premium</h3>
+                        <p class="text-5xl font-black text-center my-4">₹7,999</p>
+                         <p class="text-center text-gray-400 mb-6">/month</p>
+                        <ul class="space-y-4 text-gray-300 flex-grow">
+                           <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>20+ Posts</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>8+ Reels</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>3 Platforms (IG+FB+LinkedIn/YT)</li>
+                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Full Content Calendar</li>
+                        </ul>
+                        <a href="https://wa.me/918839189226?text=Hello!%20I'm%20interested%20in%20the%20Premium%20social%20media%20package." target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="py-16 sm:py-20">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Let's Create Something Amazing</h2>
+                </div>
+                <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 card-bg p-6 sm:p-8 md:p-12 rounded-2xl animate-on-scroll">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-6">Send a Message</h3>
+                        <form id="contact-form">
+                            <input type="hidden" name="access_key" value="5b2b9c7c-9b6e-4458-97c9-f7a6f3b0f5b5">
+                            <input type="hidden" name="subject" value="New Contact Form Submission from Website">
+                            <div class="mb-4"><input type="text" name="name" placeholder="Your Name" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+                            <div class="mb-4"><input type="email" name="email" placeholder="Your Email" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
+                            <div class="mb-4"><textarea name="message" rows="4" placeholder="How can we help?" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea></div>
+                            <button id="form-submit-button" type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transform hover:scale-105">Send Message</button>
+                            <p id="form-result" class="text-center mt-4 opacity-0"></p>
+                        </form>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h4 class="text-xl font-bold mb-4">Contact Iqbal Khan</h4>
+                        <a href="https://wa.me/918839189226?text=Hello%20GraphixLab%20Media!%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="flex items-center space-x-4 p-4 rounded-lg hover:bg-purple-900/30">
+                            <i data-lucide="message-circle" class="w-8 h-8 text-green-400"></i>
+                            <div><p class="font-bold">WhatsApp</p><p class="text-gray-400">+91 88391 89226</p></div>
+                        </a>
+                        <a href="mailto:info.graphixlabmedia@gmail.com" class="flex items-center space-x-4 p-4 rounded-lg hover:bg-purple-900/30 mt-4">
+                             <i data-lucide="mail" class="w-8 h-8 text-blue-400"></i>
+                            <div><p class="font-bold">Email</p><p class="text-gray-400">info.graphixlabmedia@gmail.com</p></div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-purple-800/30 mt-20">
+            <div class="container mx-auto px-6 py-8 text-center text-gray-400">
+                <p class="mb-2">&copy; 2025 GraphixLab Media. All Rights Reserved.</p>
+                <div class="flex justify-center space-x-6 mt-4">
+                    <a href="https://wa.me/918839189226?text=Hello%20GraphixLab%20Media!%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="hover:text-green-400 transform hover:scale-125 transition-transform"><i data-lucide="message-circle"></i></a>
+                    <a href="https://www.instagram.com/graphixlabmedia/" target="_blank" class="hover:text-purple-400 transform hover:scale-125 transition-transform"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                // Animate headline after preloader is gone
+                const headlineLines = document.querySelectorAll('.headline-line');
+                if(headlineLines.length) {
+                    headlineLines.forEach(line => {
+                       line.classList.add('visible');
+                    });
+                }
+                
+                // Animate the rest of the hero content after the headline
+                 const heroContent = document.querySelectorAll('#home .animate-on-scroll');
+                 heroContent.forEach(el => el.classList.add('is-visible'));
+
+            }, 2000); 
+
+            const cursorGlow = document.getElementById('cursor-glow');
+            if (window.matchMedia("(pointer: fine)").matches) { 
+                window.addEventListener('mousemove', (e) => {
+                    cursorGlow.style.left = e.clientX + 'px';
+                    cursorGlow.style.top = e.clientY + 'px';
+                });
+            } else {
+                cursorGlow.style.display = 'none';
+            }
+            
+            const scrollElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // This is the new logic for bi-directional animation
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Reset the animation when it scrolls out of view
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, { 
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+            
+            scrollElements.forEach(el => observer.observe(el));
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('bg-black/50', window.scrollY > 50);
+                header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
+            });
+            
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const object = {};
+                formData.forEach((value, key) => object[key] = value);
+                const json = JSON.stringify(object);
+                const result = document.getElementById('form-result');
+                const button = document.getElementById('form-submit-button');
+                button.disabled = true;
+                button.innerHTML = "Sending...";
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    result.innerHTML = jsonResponse.success ? "Message sent successfully!" : jsonResponse.message;
+                    result.classList.toggle('text-green-400', jsonResponse.success);
+                    result.classList.toggle('text-red-400', !jsonResponse.success);
+                })
+                .catch(() => result.innerHTML = "Something went wrong!")
+                .finally(() => {
+                    form.reset();
+                    result.style.opacity = '1';
+                    button.disabled = false;
+                    button.innerHTML = "Send Message";
+                    setTimeout(() => result.style.opacity = '0', 4000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
