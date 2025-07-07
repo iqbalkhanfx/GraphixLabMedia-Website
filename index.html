@@ -16,7 +16,6 @@
             color: #E0E0E0;
             overflow-x: hidden;
         }
-        /* Preloader Styles */
         #preloader {
             position: fixed;
             top: 0;
@@ -42,14 +41,11 @@
             opacity: 0;
             animation: textPulse 2s ease-in-out forwards;
         }
-
         @keyframes textPulse {
             0% { opacity: 0; transform: scale(0.95); }
             50% { opacity: 1; transform: scale(1.05); }
             100% { opacity: 0; transform: scale(0.95); }
         }
-        
-        /* --- MODIFIED CURSOR GLOW STYLES --- */
         #cursor-glow {
             position: fixed;
             width: 400px;
@@ -58,19 +54,13 @@
             background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%);
             pointer-events: none;
             z-index: 999;
-            /* Set initial scale and update transition to include transform for the bubble effect */
             transform: translate(-50%, -50%) scale(1);
-            transition: left 0.1s ease-out, 
-                        top 0.1s ease-out, 
-                        transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: none; 
+            transition: left 0.1s ease-out, top 0.1s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: none;
         }
-
-        /* This new class will be added on click/touch to create the bubble effect */
         #cursor-glow.active {
             transform: translate(-50%, -50%) scale(1.4);
         }
-
         .text-gradient-logo {
             background: linear-gradient(120deg, #3b82f6, #a855f7);
             -webkit-background-clip: text;
@@ -82,11 +72,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Headline Animation */
+        html { scroll-behavior: smooth; }
         .headline-line {
             display: block;
             opacity: 0;
@@ -97,8 +83,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Scroll Animations (Pop-like effect) */
         .animate-on-scroll {
             opacity: 0;
             transform: scale(0.9);
@@ -107,6 +91,29 @@
         .animate-on-scroll.is-visible {
             opacity: 1;
             transform: scale(1);
+        }
+        .discount-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(25%, -50%) rotate(15deg);
+            background-color: #f59e0b;
+            color: #1e293b;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            animation: badge-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes badge-pop {
+            from { transform: translate(25%, -50%) rotate(15deg) scale(0); }
+            to { transform: translate(25%, -50%) rotate(15deg) scale(1); }
+        }
+        .timer-box {
+            background: rgba(0,0,0,0.2);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
         }
     </style>
 </head>
@@ -246,50 +253,68 @@
             </section>
             
             <section id="pricing" class="py-16 sm:py-20">
-                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                <div class="text-center mb-8 animate-on-scroll">
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Monthly Social Media Packages</h2>
-                    <p class="text-gray-300 max-w-2xl mx-auto">Transparent pricing to fit your business needs.</p>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll">
+                <div id="offer-banner" class="hidden max-w-2xl mx-auto mb-12 text-center bg-yellow-400/20 border border-yellow-500 text-yellow-300 font-bold py-4 px-6 rounded-lg animate-on-scroll">
+                    <p id="offer-text" class="text-lg mb-2"></p>
+                    <div id="countdown-timer" class="flex justify-center items-center space-x-4 text-sm"></div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-stretch">
+                    <!-- Starter Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll relative">
+                        <div id="badge-starter" class="discount-badge hidden"></div>
                         <h3 class="text-2xl font-bold text-center">Starter</h3>
-                        <p class="text-5xl font-black text-center my-4">₹1,999</p>
-                        <p class="text-center text-gray-400 mb-6">/month</p>
-                        <ul class="space-y-4 text-gray-300 flex-grow">
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>8 Custom Posts</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>2 Reels</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>1 Platform (IG or FB)</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Hashtag Suggestions</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Branded Templates</li>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">Perfect for new businesses to establish a professional online presence.</p>
+                        <div class="text-center my-4">
+                            <p id="original-price-starter" class="text-2xl text-gray-500 line-through h-8"></p>
+                            <p id="price-starter" class="text-5xl font-black"></p>
+                        </div>
+                        <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm">
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">8 Custom Posts</strong> to keep your feed active.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">2 High-Impact Reels</strong> to capture audience attention.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">1 Platform</strong> (IG or FB) for focused growth.</span></li>
                         </ul>
-                        <a href="https://wa.me/918839189226?text=Hello!%20I'm%20interested%20in%20the%20Starter%20social%20media%20package." target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
+                        <a id="link-starter" href="#" target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
                     </div>
+                    <!-- Standard Package (Highlighted) -->
                     <div class="card-bg p-8 rounded-2xl flex flex-col border-2 border-blue-500 relative transform md:scale-105 animate-on-scroll" style="transition-delay: 150ms;">
+                        <div id="badge-standard" class="discount-badge hidden"></div>
                         <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-sm font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
                         <h3 class="text-2xl font-bold text-center">Standard</h3>
-                        <p class="text-5xl font-black text-center my-4 text-blue-400">₹4,999</p>
-                         <p class="text-center text-gray-400 mb-6">/month</p>
-                        <ul class="space-y-4 text-gray-300 flex-grow">
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>15 Custom Posts</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>4 Reels</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>2 Platforms (IG + FB)</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Caption Writing</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Hashtag Research</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Post Scheduling</li>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">Our best-seller, designed for growing businesses ready to scale up.</p>
+                        <div class="text-center my-4">
+                            <p id="original-price-standard" class="text-2xl text-gray-500 line-through h-8"></p>
+                            <p id="price-standard" class="text-5xl font-black text-blue-400"></p>
+                        </div>
+                         <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm">
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">15 Posts & 4 Reels</strong> for a steady stream of content.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">2 Platforms</strong> (IG + FB) for wider audience reach.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Expert Caption Writing</strong> to engage and convert.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Advanced Hashtag Research</strong> for maximum visibility.</span></li>
                         </ul>
-                        <a href="https://wa.me/918839189226?text=Hello!%20I'm%20interested%20in%20the%20Standard%20social%20media%20package." target="_blank" class="mt-8 block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transition-all transform hover:scale-105">Choose Plan</a>
+                        <a id="link-standard" href="#" target="_blank" class="mt-8 block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transition-all transform hover:scale-105">Choose Plan</a>
                     </div>
+                    <!-- Premium Package -->
                     <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll" style="transition-delay: 300ms;">
+                        <div id="badge-premium" class="discount-badge hidden"></div>
                         <h3 class="text-2xl font-bold text-center">Premium</h3>
-                        <p class="text-5xl font-black text-center my-4">₹7,999</p>
-                         <p class="text-center text-gray-400 mb-6">/month</p>
-                        <ul class="space-y-4 text-gray-300 flex-grow">
-                             <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>20+ Posts</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>8+ Reels</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>3 Platforms (IG+FB+LinkedIn/YT)</li>
-                            <li class="flex items-center"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3"></i>Full Content Calendar</li>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">The ultimate solution for brands aiming for market leadership.</p>
+                        <div class="text-center my-4">
+                            <p id="original-price-premium" class="text-2xl text-gray-500 line-through h-8"></p>
+                            <p id="price-premium" class="text-5xl font-black"></p>
+                        </div>
+                         <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm">
+                           <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Everything in Standard, plus:</strong></span></li>
+                           <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">20+ Posts & 8+ Reels</strong> to dominate the feed.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">3+ Platforms</strong> for maximum online presence.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Advanced Performance Analytics</strong> & Reporting.</span></li>
+                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Dedicated Account Manager</strong> & Monthly Strategy Call.</span></li>
                         </ul>
-                        <a href="https://wa.me/918839189226?text=Hello!%20I'm%20interested%20in%20the%20Premium%20social%20media%20package." target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
+                        <a id="link-premium" href="#" target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
                     </div>
                 </div>
             </section>
@@ -305,7 +330,7 @@
                             <div class="mb-4"><input type="text" name="name" placeholder="Your Name" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
                             <div class="mb-4"><input type="email" name="email" placeholder="Your Email" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
                             <div class="mb-4"><textarea name="message" rows="4" placeholder="How can we help?" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea></div>
-                            <button id="form-submit-button" type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transform hover:scale-105">Send Message</button>
+                            <button id="form-submit-button" type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transform hover:scale-105">Send to WhatsApp</button>
                         </form>
                     </div>
                     <div class="flex flex-col justify-center">
@@ -350,36 +375,22 @@
             }, 2000); 
 
             const cursorGlow = document.getElementById('cursor-glow');
-
-            // --- JAVASCRIPT FOR BUBBLE EFFECT START ---
-            // Function to add the active class to the glow
-            function activateGlow() {
-                cursorGlow.classList.add('active');
-            }
-            // Function to remove the active class from the glow
-            function deactivateGlow() {
-                cursorGlow.classList.remove('active');
-            }
+            function activateGlow() { cursorGlow.classList.add('active'); }
+            function deactivateGlow() { cursorGlow.classList.remove('active'); }
             
-            // Add listeners for mouse clicks and touch events
-            window.addEventListener('mousedown', activateGlow);
-            window.addEventListener('mouseup', deactivateGlow);
-            window.addEventListener('touchstart', activateGlow, { passive: true });
-            window.addEventListener('touchend', deactivateGlow);
-            // --- JAVASCRIPT FOR BUBBLE EFFECT END ---
-
             function updateGlowPosition(e) {
-                // Check if e.touches exists and has items for touch events
                 const x = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
                 const y = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
-
-                // This check prevents errors when touch ends and clientX/Y are undefined
                 if (x === undefined || y === undefined) return;
-
                 cursorGlow.style.display = 'block';
                 cursorGlow.style.left = x + 'px';
                 cursorGlow.style.top = y + 'px';
             }
+
+            window.addEventListener('mousedown', activateGlow);
+            window.addEventListener('mouseup', deactivateGlow);
+            window.addEventListener('touchstart', (e) => { updateGlowPosition(e); activateGlow(); }, { passive: true });
+            window.addEventListener('touchend', deactivateGlow);
             window.addEventListener('mousemove', updateGlowPosition);
             window.addEventListener('touchmove', updateGlowPosition, { passive: true });
             
@@ -392,9 +403,8 @@
                         entry.target.classList.remove('is-visible');
                     }
                 });
-            }, { 
-                threshold: 0.1
-            });
+            }, { threshold: 0.1 });
+            
             scrollElements.forEach(el => observer.observe(el));
 
             const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -413,21 +423,89 @@
             const form = document.getElementById('contact-form');
             form.addEventListener('submit', function(e) {
                 e.preventDefault(); 
-
                 const name = form.querySelector('input[name="name"]').value;
                 const email = form.querySelector('input[name="email"]').value;
                 const message = form.querySelector('textarea[name="message"]').value;
-                
                 const phoneNumber = '918839189226';
-
                 const prefilledMessage = `Hello GraphixLab Media!\n\nI got your number from the website and would like to inquire about your services.\n\n*Name:* ${name}\n*Email:* ${email}\n*Message:* ${message}`;
-
                 const encodedMessage = encodeURIComponent(prefilledMessage);
-
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
                 window.open(whatsappUrl, '_blank');
             });
+
+            // --- DISCOUNT & TIMER LOGIC ---
+            const basePrices = { starter: 1999, standard: 4999, premium: 7999 };
+            const offerBanner = document.getElementById('offer-banner');
+            const offerTextEl = document.getElementById('offer-text');
+            const timerEl = document.getElementById('countdown-timer');
+            let countdownInterval;
+
+            const updateTimer = (saleEndDate) => {
+                const now = new Date().getTime();
+                const distance = saleEndDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    offerBanner.classList.add('hidden');
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                timerEl.innerHTML = `
+                    <div class="timer-box">${days}<span class="text-xs">d</span></div>
+                    <div class="timer-box">${hours}<span class="text-xs">h</span></div>
+                    <div class="timer-box">${minutes}<span class="text-xs">m</span></div>
+                    <div class="timer-box">${seconds}<span class="text-xs">s</span></div>
+                `;
+            };
+
+            const applyDiscount = (plan, discount) => {
+                const newPrice = Math.round(basePrices[plan] * (1 - discount / 100));
+                document.getElementById(`original-price-${plan}`).innerHTML = `<s>₹${basePrices[plan].toLocaleString('en-IN')}</s>`;
+                document.getElementById(`price-${plan}`).innerHTML = `₹${newPrice.toLocaleString('en-IN')}`;
+                const badgeEl = document.getElementById(`badge-${plan}`);
+                badgeEl.innerHTML = `${discount}% OFF`;
+                badgeEl.classList.remove('hidden');
+                const message = `Hello! I'm interested in the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan with the ${discount}% discount.`;
+                document.getElementById(`link-${plan}`).href = `https://wa.me/918839189226?text=${encodeURIComponent(message)}`;
+            };
+            
+            const setOriginalPrice = (plan) => {
+                 document.getElementById(`original-price-${plan}`).innerHTML = '';
+                 document.getElementById(`badge-${plan}`).classList.add('hidden');
+                 document.getElementById(`price-${plan}`).innerHTML = `₹${basePrices[plan].toLocaleString('en-IN')}`;
+                 const message = `Hello! I'm interested in the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan.`;
+                 document.getElementById(`link-${plan}`).href = `https://wa.me/918839189226?text=${encodeURIComponent(message)}`;
+            };
+
+            const now = new Date();
+            const saleEndDate = new Date('2025-07-12T23:59:59');
+            let activeDiscount = 0;
+
+            if (now <= saleEndDate) {
+                activeDiscount = 30;
+                offerTextEl.innerHTML = 'LIMITED TIME OFFER: 30% OFF!';
+                offerBanner.classList.remove('hidden');
+                countdownInterval = setInterval(() => updateTimer(saleEndDate), 1000);
+            } else {
+                if (Math.random() < 0.5) {
+                    const discounts = [20, 30];
+                    activeDiscount = discounts[Math.floor(Math.random() * discounts.length)];
+                    offerTextEl.innerHTML = `SURPRISE! TAKE ${activeDiscount}% OFF TODAY!`;
+                    timerEl.classList.add('hidden');
+                    offerBanner.classList.remove('hidden');
+                }
+            }
+
+            if (activeDiscount > 0) {
+                ['starter', 'standard', 'premium'].forEach(plan => applyDiscount(plan, activeDiscount));
+            } else {
+                ['starter', 'standard', 'premium'].forEach(plan => setOriginalPrice(plan));
+            }
         });
     </script>
 </body>
