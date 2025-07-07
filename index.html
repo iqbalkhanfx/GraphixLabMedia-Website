@@ -1,120 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GraphixLab Media - Your Social Media Partner</title>
+    
+    <!-- =================================================================== -->
+    <!-- SEO & SOCIAL MEDIA META TAGS (CRITICAL FOR RANKING & SHARING) -->
+    <!-- =================================================================== -->
+    <title>Website Design & Social Media Agency in India | GraphixLab Media</title>
+    <meta name="description" content="GraphixLab Media offers expert website design, development, and nationwide social media management. Get affordable, high-quality digital solutions to scale your brand.">
+    <meta name="keywords" content="website development India, affordable website design, e-commerce website development, social media agency India, social media management, graphic design services, video editing, technical support services, mobile app development, GraphixLab Media">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://graphixlabmedia.pages.dev/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://graphixlabmedia.pages.dev/">
+    <meta property="og:title" content="Website Design & Social Media Agency in India | GraphixLab Media">
+    <meta property="og:description" content="Expert website design, development, and nationwide social media management. Get affordable, high-quality digital solutions to scale your brand.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0A0216/E0E0E0?text=GraphixLab+Media">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://graphixlabmedia.pages.dev/">
+    <meta property="twitter:title" content="Website Design & Social Media Agency in India | GraphixLab Media">
+    <meta property="twitter:description" content="Expert website design, development, and nationwide social media management. Get affordable, high-quality digital solutions to scale your brand.">
+    <meta property="twitter:image" content="https://placehold.co/1200x630/0A0216/E0E0E0?text=GraphixLab+Media">
+
+    <!-- Schema.org Markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GraphixLab Media",
+      "url": "https://graphixlabmedia.pages.dev/",
+      "logo": "https://placehold.co/200x60/0A0216/E0E0E0?text=GraphixLab+Logo",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-88391-89226",
+        "contactType": "Customer Service",
+        "areaServed": "IN",
+        "availableLanguage": "en"
+      },
+      "description": "India's premier creative agency for website design, development, mobile apps, and social media management to elevate brands nationwide."
+    }
+    </script>
+    
+    <!-- Tailwind CSS and Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Styles -->
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0A0216;
-            color: #E0E0E0;
-            overflow-x: hidden;
-        }
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0A0216;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
-        #preloader.loaded {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-        .loader-text {
-            font-size: clamp(2rem, 10vw, 5rem);
-            font-weight: 900;
-            color: white;
-            opacity: 0;
-            animation: textPulse 2s ease-in-out forwards;
-        }
-        @keyframes textPulse {
-            0% { opacity: 0; transform: scale(0.95); }
-            50% { opacity: 1; transform: scale(1.05); }
-            100% { opacity: 0; transform: scale(0.95); }
-        }
-        #cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%);
-            pointer-events: none;
-            z-index: 999;
-            transform: translate(-50%, -50%) scale(1);
-            transition: left 0.1s ease-out, top 0.1s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: none;
-        }
-        #cursor-glow.active {
-            transform: translate(-50%, -50%) scale(1.4);
-        }
-        .text-gradient-logo {
-            background: linear-gradient(120deg, #3b82f6, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .card-bg {
-            background-color: rgba(26, 17, 51, 0.5);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #0A0216; color: #E0E0E0; overflow-x: hidden; }
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0A0216; display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.5s ease-out, visibility 0.5s ease-out; }
+        #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-text { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; color: white; opacity: 0; animation: textPulse 2s ease-in-out forwards; }
+        @keyframes textPulse { 0% { opacity: 0; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } 100% { opacity: 0; transform: scale(0.95); } }
+        #cursor-glow { position: fixed; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%); pointer-events: none; z-index: 999; transform: translate(-50%, -50%) scale(1); transition: left 0.1s ease-out, top 0.1s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none; }
+        #cursor-glow.active { transform: translate(-50%, -50%) scale(1.4); }
+        .text-gradient-logo { background: linear-gradient(120deg, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .card-bg { background-color: rgba(26, 17, 51, 0.5); border: 1px solid rgba(139, 92, 246, 0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         html { scroll-behavior: smooth; }
-        .headline-line {
-            display: block;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .headline-line.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .animate-on-scroll {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .discount-badge {
-            position: absolute;
-            top: 0;
-            right: 0;
-            transform: translate(25%, -50%) rotate(15deg);
-            background-color: #f59e0b;
-            color: #1e293b;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            animation: badge-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-        @keyframes badge-pop {
-            from { transform: translate(25%, -50%) rotate(15deg) scale(0); }
-            to { transform: translate(25%, -50%) rotate(15deg) scale(1); }
-        }
-        .timer-box {
-            background: rgba(0,0,0,0.2);
-            padding: 0.25rem 0.5rem;
-            border-radius: 0.25rem;
-        }
+        .headline-line { display: block; opacity: 0; transform: translateY(50px); transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .headline-line.visible { opacity: 1; transform: translateY(0); }
+        .animate-on-scroll { opacity: 0; transform: translateY(20px) scale(0.98); transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+        .discount-badge { position: absolute; top: 0; right: 0; transform: translate(25%, -50%) rotate(15deg); background-color: #f59e0b; color: #1e293b; font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 9999px; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); animation: badge-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+        @keyframes badge-pop { from { transform: translate(25%, -50%) rotate(15deg) scale(0); } to { transform: translate(25%, -50%) rotate(15deg) scale(1); } }
+        .timer-box { background: rgba(0,0,0,0.2); padding: 0.25rem 0.5rem; border-radius: 0.25rem; }
+        .client-logo { background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 0.75rem; height: 80px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.125rem; color: #d1d5db; transition: all 0.3s ease; filter: grayscale(100%); opacity: 0.7; }
+        .client-logo:hover { filter: grayscale(0%); opacity: 1; background-color: rgba(255, 255, 255, 0.1); transform: scale(1.05); }
+        .plan-button { transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .plan-button:hover { transform: scale(1.05); }
+        .plan-button:active { transform: scale(0.98); }
     </style>
 </head>
 <body class="text-white">
@@ -132,8 +95,9 @@
                 <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-medium">
                     <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
                     <a href="#services" class="hover:text-purple-400 transition-colors">Services</a>
-                    <a href="#why-us" class="hover:text-purple-400 transition-colors">Why Us</a>
-                    <a href="#pricing" class="hover:text-purple-400 transition-colors">Pricing</a>
+                    <a href="#pricing" class="hover:text-purple-400 transition-colors">Social Media</a>
+                    <a href="#web-development" class="hover:text-purple-400 transition-colors">Web Design</a>
+                    <a href="#clients" class="hover:text-purple-400 transition-colors">Clients</a>
                 </div>
                 <a href="#contact" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-500 transition-all transform hover:scale-105">Contact Us</a>
                 <button id="mobile-menu-button" class="md:hidden">
@@ -146,8 +110,9 @@
             <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
                 <a href="#about" class="mobile-link hover:text-purple-400 transition-colors">About</a>
                 <a href="#services" class="mobile-link hover:text-purple-400 transition-colors">Services</a>
-                <a href="#why-us" class="mobile-link hover:text-purple-400 transition-colors">Why Us</a>
-                <a href="#pricing" class="mobile-link hover:text-purple-400 transition-colors">Pricing</a>
+                <a href="#pricing" class="mobile-link hover:text-purple-400 transition-colors">Social Media</a>
+                <a href="#web-development" class="mobile-link hover:text-purple-400 transition-colors">Web Design</a>
+                <a href="#clients" class="mobile-link hover:text-purple-400 transition-colors">Clients</a>
                 <a href="#contact" class="mobile-link hover:text-purple-400 transition-colors">Contact</a>
             </div>
         </div>
@@ -159,7 +124,7 @@
                         <span class="headline-line">Visually Striking.</span>
                         <span class="headline-line text-gradient-logo" style="transition-delay: 0.2s;">Digitally Impactful.</span>
                     </h1>
-                    <p class="animate-on-scroll text-lg sm:text-xl md:text-2xl font-bold text-gray-200 mb-10">Your Social Media Partner</p>
+                    <p class="animate-on-scroll text-lg sm:text-xl md:text-2xl font-bold text-gray-200 mb-10">India's Go-To Digital Solutions Partner</p>
                     <div class="animate-on-scroll flex flex-col sm:flex-row justify-center items-center gap-4" style="transition-delay: 0.2s;">
                         <a href="#pricing" class="w-full sm:w-auto bg-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-500 transition-all text-lg transform hover:scale-105">View Packages</a>
                         <a href="#contact" class="w-full sm:w-auto border border-purple-400 text-white font-bold py-4 px-8 rounded-lg hover:bg-purple-400/20 transition-all text-lg transform hover:scale-105">Get in Touch</a>
@@ -171,7 +136,7 @@
                  <div class="max-w-4xl mx-auto card-bg p-6 sm:p-8 md:p-12 rounded-2xl text-center animate-on-scroll">
                     <h2 class="text-3xl md:text-4xl font-bold mb-6">About GraphixLab Media</h2>
                     <p class="text-base sm:text-lg text-gray-300">
-                        GraphixLab Media is a creative digital design and marketing agency committed to transforming your brand’s vision into visually striking and impactful content. We specialize in providing high-quality, tailored solutions for startups, small businesses, and established brands looking to enhance their digital presence.
+                        GraphixLab Media is a creative digital design and marketing agency, operating from Bilaspur, Chhattisgarh, committed to transforming brands across India. Our vision is to create visually striking and impactful content, providing high-quality, tailored solutions for startups, small businesses, and established brands looking to enhance their digital presence nationwide.
                     </p>
                  </div>
             </section>
@@ -194,8 +159,8 @@
                     </div>
                     <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 200ms;">
                         <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="monitor-smartphone" class="w-8 h-8 text-white"></i></div>
-                        <h3 class="text-2xl font-bold mb-2">Website Design</h3>
-                        <p class="text-gray-400 flex-grow">Custom, fully responsive websites built for functionality and visual appeal.</p>
+                        <h3 class="text-2xl font-bold mb-2">Website & App Development</h3>
+                        <p class="text-gray-400 flex-grow">Custom websites and mobile apps built for functionality and visual appeal.</p>
                     </div>
                      <div class="card-bg p-8 rounded-2xl flex flex-col items-start text-left hover:border-purple-400/50 transition-all transform hover:-translate-y-2 animate-on-scroll" style="transition-delay: 0ms;">
                         <div class="bg-gradient-to-br from-purple-600 to-blue-600 p-3 rounded-lg mb-4"><i data-lucide="layout-grid" class="w-8 h-8 text-white"></i></div>
@@ -214,11 +179,11 @@
                     </div>
                 </div>
             </section>
-            
+
             <section id="why-us" class="py-16 sm:py-20">
                 <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
                     <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Why Partner With Us?</h2>
-                    <p class="text-gray-300 max-w-2xl mx-auto">We're more than just a design agency; we're your partner in growth.</p>
+                    <p class="text-gray-300 max-w-2xl mx-auto">We're more than just an agency; we're your partner in growth.</p>
                 </div>
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="flex items-start space-x-4 animate-on-scroll">
@@ -236,14 +201,14 @@
                         </div>
                     </div>
                      <div class="flex items-start space-x-4 animate-on-scroll" style="transition-delay: 200ms;">
-                         <i data-lucide="rocket" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
+                        <i data-lucide="rocket" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
                         <div>
                             <h3 class="text-xl font-bold">Fast Turnaround & Revisions</h3>
                             <p class="text-gray-400">We work efficiently to deliver your content on time, with revisions included to ensure you're happy.</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4 animate-on-scroll" style="transition-delay: 300ms;">
-                         <i data-lucide="messages-square" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
+                        <i data-lucide="messages-square" class="w-10 h-10 text-blue-400 mt-1 flex-shrink-0"></i>
                         <div>
                             <h3 class="text-xl font-bold">Personalized Support</h3>
                             <p class="text-gray-400">You're not just another client. We offer dedicated communication and support throughout your project.</p>
@@ -260,62 +225,158 @@
                     <p id="offer-text" class="text-lg mb-2"></p>
                     <div id="countdown-timer" class="flex justify-center items-center space-x-4 text-sm"></div>
                 </div>
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8 items-stretch">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 items-stretch">
                     <!-- Starter Package -->
                     <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll relative">
-                        <div id="badge-starter" class="discount-badge hidden"></div>
                         <h3 class="text-2xl font-bold text-center">Starter</h3>
-                        <p class="text-sm text-center text-gray-400 h-12 mt-1">Perfect for new businesses to establish a professional online presence.</p>
-                        <div class="text-center my-4">
-                            <p id="original-price-starter" class="text-2xl text-gray-500 line-through h-8"></p>
-                            <p id="price-starter" class="text-5xl font-black"></p>
-                        </div>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">For new businesses establishing a professional presence.</p>
+                        <div class="text-center my-4"><p id="original-price-starter" class="text-2xl text-gray-500 line-through h-8"></p><p id="price-starter" class="text-5xl font-black"></p></div>
                         <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
-                        <ul class="space-y-3 text-gray-300 flex-grow text-sm">
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">8 Custom Posts</strong> to keep your feed active.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">2 High-Impact Reels</strong> to capture audience attention.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">1 Platform</strong> (IG or FB) for focused growth.</span></li>
-                        </ul>
-                        <a id="link-starter" href="#" target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">8 Custom Posts</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">2 Reels</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">1 Platform</strong> (IG or FB)</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Hashtag Suggestions</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Branded Templates</span></li></ul>
+                        <a id="link-starter" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700">Choose Plan</a>
                     </div>
-                    <!-- Standard Package (Highlighted) -->
-                    <div class="card-bg p-8 rounded-2xl flex flex-col border-2 border-blue-500 relative transform md:scale-105 animate-on-scroll" style="transition-delay: 150ms;">
-                        <div id="badge-standard" class="discount-badge hidden"></div>
+                    <!-- Standard Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll relative">
                         <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-sm font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
                         <h3 class="text-2xl font-bold text-center">Standard</h3>
-                        <p class="text-sm text-center text-gray-400 h-12 mt-1">Our best-seller, designed for growing businesses ready to scale up.</p>
-                        <div class="text-center my-4">
-                            <p id="original-price-standard" class="text-2xl text-gray-500 line-through h-8"></p>
-                            <p id="price-standard" class="text-5xl font-black text-blue-400"></p>
-                        </div>
-                         <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
-                        <ul class="space-y-3 text-gray-300 flex-grow text-sm">
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">15 Posts & 4 Reels</strong> for a steady stream of content.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">2 Platforms</strong> (IG + FB) for wider audience reach.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Expert Caption Writing</strong> to engage and convert.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Advanced Hashtag Research</strong> for maximum visibility.</span></li>
-                        </ul>
-                        <a id="link-standard" href="#" target="_blank" class="mt-8 block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transition-all transform hover:scale-105">Choose Plan</a>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">For growing businesses ready to scale up engagement.</p>
+                        <div class="text-center my-4"><p id="original-price-standard" class="text-2xl text-gray-500 line-through h-8"></p><p id="price-standard" class="text-5xl font-black text-blue-400"></p></div>
+                        <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">15 Custom Posts</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">4 High-Impact Reels</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">2 Platforms</strong> (IG + FB)</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Expert Caption Writing</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Advanced Hashtag Research</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Post Scheduling</span></li></ul>
+                        <a id="link-standard" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500">Choose Plan</a>
                     </div>
                     <!-- Premium Package -->
-                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll" style="transition-delay: 300ms;">
-                        <div id="badge-premium" class="discount-badge hidden"></div>
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll relative">
                         <h3 class="text-2xl font-bold text-center">Premium</h3>
-                        <p class="text-sm text-center text-gray-400 h-12 mt-1">The ultimate solution for brands aiming for market leadership.</p>
-                        <div class="text-center my-4">
-                            <p id="original-price-premium" class="text-2xl text-gray-500 line-through h-8"></p>
-                            <p id="price-premium" class="text-5xl font-black"></p>
-                        </div>
-                         <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
-                        <ul class="space-y-3 text-gray-300 flex-grow text-sm">
-                           <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Everything in Standard, plus:</strong></span></li>
-                           <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">20+ Posts & 8+ Reels</strong> to dominate the feed.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">3+ Platforms</strong> for maximum online presence.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Advanced Performance Analytics</strong> & Reporting.</span></li>
-                            <li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Dedicated Account Manager</strong> & Monthly Strategy Call.</span></li>
-                        </ul>
-                        <a id="link-premium" href="#" target="_blank" class="mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700 transition-all transform hover:scale-105">Choose Plan</a>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">For brands aiming for significant market presence.</p>
+                        <div class="text-center my-4"><p id="original-price-premium" class="text-2xl text-gray-500 line-through h-8"></p><p id="price-premium" class="text-5xl font-black"></p></div>
+                        <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">20+ Custom Posts</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">8+ High-Impact Reels</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">3 Platforms</strong> (IG, FB, LinkedIn/YT)</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Full Content Calendar</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Advanced Performance Analytics</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Dedicated Account Manager</span></li></ul>
+                        <a id="link-premium" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700">Choose Plan</a>
                     </div>
+                    <!-- Premium Plus Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll relative border-2 border-purple-500">
+                        <h3 class="text-2xl font-bold text-center text-purple-400">Premium Plus</h3>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">The ultimate all-in-one solution for market leaders.</p>
+                        <div class="text-center my-4"><p id="original-price-premium_plus" class="text-2xl text-gray-500 line-through h-8"></p><p id="price-premium_plus" class="text-5xl font-black"></p></div>
+                        <p class="text-center text-gray-400 mb-6 -mt-4">/month</p>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Everything in Premium, plus:</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">30+ Posts & 12+ Reels</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">4+ Platforms</strong> Managed</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Basic Ad Management</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Monthly Competitor Analysis</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Dedicated Account Director</span></li></ul>
+                        <a id="link-premium_plus" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-purple-500">Choose Plan</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="web-development" class="py-16 sm:py-20">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Website Design & Development</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto">From simple landing pages to complex applications, we build websites that perform.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 items-stretch">
+                    <!-- Static Site Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll">
+                        <h3 class="text-2xl font-bold text-center">Static Site</h3>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">Ideal for portfolios, resumes, or a simple online brochure.</p>
+                        <div class="text-center my-4">
+                            <p class="text-gray-400 text-sm">Starts at</p>
+                            <p class="text-5xl font-black">₹3,499</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Up to 2 Pages</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Fully Responsive Design</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Contact Form Integration</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Fast Loading Speed</span></li></ul>
+                        <p class="text-xs text-center text-gray-500 mt-4">Domain & hosting extra. Affordable setup available (₹500 one-time).</p>
+                        <a id="link-web-static" href="#" target="_blank" class="plan-button mt-6 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700">Get Started</a>
+                    </div>
+                    <!-- Business Site Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll">
+                        <h3 class="text-2xl font-bold text-center">Business Site</h3>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">A complete solution for established businesses and startups.</p>
+                        <div class="text-center my-4">
+                            <p class="text-gray-400 text-sm">Starts at</p>
+                            <p class="text-5xl font-black">₹7,999</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">5-7 Pages</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Content Management System (CMS)</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Custom Design & Branding</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Basic SEO Setup</span></li></ul>
+                        <a id="link-web-business" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-gray-800 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-700">Get Started</a>
+                    </div>
+                    <!-- E-commerce / Custom Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col border-2 border-blue-500 relative transform md:scale-105 animate-on-scroll" style="transition-delay: 150ms;">
+                         <div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-sm font-bold px-4 py-1 rounded-full">BEST VALUE</div>
+                        <h3 class="text-2xl font-bold text-center">E-commerce</h3>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">For online stores or projects with unique requirements.</p>
+                        <div class="text-center my-4">
+                            <p class="text-gray-400 text-sm">₹14,999 to ₹49,999</p>
+                            <p class="text-4xl font-black text-blue-400">Custom Price</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Unlimited Products</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Payment Gateway Integration</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Custom Features & Functionality</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Mobile App at higher price points</span></li></ul>
+                        <a id="link-web-ecommerce" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500">Let's Talk</a>
+                    </div>
+                    <!-- Enterprise Package -->
+                    <div class="card-bg p-8 rounded-2xl flex flex-col animate-on-scroll border-2 border-purple-500" style="transition-delay: 300ms;">
+                        <h3 class="text-2xl font-bold text-center text-purple-400">Enterprise</h3>
+                        <p class="text-sm text-center text-gray-400 h-12 mt-1">The complete digital ecosystem: Website + Mobile App.</p>
+                        <div class="text-center my-4">
+                            <p class="text-gray-400 text-sm">Starts at</p>
+                            <p class="text-5xl font-black">₹59,999</p>
+                        </div>
+                        <ul class="space-y-3 text-gray-300 flex-grow text-sm"><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Full-Featured Website</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span><strong class="text-white">Native iOS & Android App</strong></span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Powerful Admin Panel</span></li><li class="flex"><i data-lucide="check" class="w-5 h-5 text-green-400 mr-3 flex-shrink-0"></i><span>Scalable Cloud Architecture</span></li></ul>
+                        <a id="link-web-enterprise" href="#" target="_blank" class="plan-button mt-8 block w-full text-center bg-purple-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-purple-500">Book a Consultation</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="single-creative" class="py-16 sm:py-20">
+                <div class="max-w-4xl mx-auto card-bg p-8 rounded-2xl text-center animate-on-scroll flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex items-center gap-6">
+                        <i data-lucide="sparkles" class="w-16 h-16 text-yellow-400 flex-shrink-0"></i>
+                        <div class="text-left">
+                            <h3 class="text-2xl md:text-3xl font-bold">Need a Single Design?</h3>
+                            <p class="text-gray-300">We offer custom design & editing for single posts, videos, and reels.</p>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-gray-400 text-sm">Quick, professional, and affordable.</p>
+                        <a id="link-single-creative" href="#" target="_blank" class="plan-button mt-2 inline-block bg-yellow-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-400">Request a Design</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tech-support" class="py-16 sm:py-20">
+                <div class="max-w-4xl mx-auto card-bg p-8 rounded-2xl text-center animate-on-scroll flex flex-col md:flex-row items-center justify-between gap-8">
+                    <div class="flex items-center gap-6">
+                        <i data-lucide="wrench" class="w-16 h-16 text-blue-400 flex-shrink-0"></i>
+                        <div class="text-left">
+                            <h3 class="text-2xl md:text-3xl font-bold">Need Technical Support?</h3>
+                            <p class="text-gray-300">Get expert assistance for your website or digital platforms.</p>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-right">
+                        <p class="text-gray-400 text-sm">Starting from just</p>
+                        <p class="text-4xl font-black text-white">₹999</p>
+                        <a id="link-tech-support" href="#" target="_blank" class="mt-2 inline-block text-blue-400 font-bold hover:underline">Inquire Now &rarr;</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="clients" class="py-16 sm:py-20">
+                <div class="text-center mb-12 sm:mb-16 animate-on-scroll">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Trusted by Brands Nationwide</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto">We're proud to have partnered with innovative businesses across various industries.</p>
+                </div>
+                <div id="client-logos-container" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
+                    <!-- Client logos will be injected here by JavaScript -->
+                </div>
+            </section>
+
+            <section id="rating" class="py-16 sm:py-20">
+                <div class="max-w-4xl mx-auto card-bg p-8 rounded-2xl text-center animate-on-scroll">
+                    <h2 class="text-3xl font-bold mb-4">Our Clients Love Our Work</h2>
+                    <div class="flex justify-center items-center space-x-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-8 h-8 fill-current"></i>
+                        <i data-lucide="star" class="w-8 h-8 fill-current"></i>
+                        <i data-lucide="star" class="w-8 h-8 fill-current"></i>
+                        <i data-lucide="star" class="w-8 h-8 fill-current"></i>
+                        <i data-lucide="star" class="w-8 h-8 fill-current"></i>
+                    </div>
+                    <p class="text-lg text-gray-300">
+                        Rated <strong class="text-white">5 / 5 stars</strong> based on <strong class="text-white">100+</strong> happy client reviews.
+                    </p>
                 </div>
             </section>
 
@@ -330,7 +391,7 @@
                             <div class="mb-4"><input type="text" name="name" placeholder="Your Name" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
                             <div class="mb-4"><input type="email" name="email" placeholder="Your Email" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></div>
                             <div class="mb-4"><textarea name="message" rows="4" placeholder="How can we help?" required class="w-full bg-purple-900/20 border border-purple-800/50 rounded-lg py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea></div>
-                            <button id="form-submit-button" type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500 transform hover:scale-105">Send to WhatsApp</button>
+                            <button id="form-submit-button" type="submit" class="plan-button w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-500">Send to WhatsApp</button>
                         </form>
                     </div>
                     <div class="flex flex-col justify-center">
@@ -346,11 +407,12 @@
                     </div>
                 </div>
             </section>
+
         </main>
 
         <footer class="border-t border-purple-800/30 mt-20">
             <div class="container mx-auto px-6 py-8 text-center text-gray-400">
-                <p class="mb-2">&copy; 2025 GraphixLab Media. All Rights Reserved.</p>
+                <p class="mb-2">&copy; <span id="copyright-year"></span> GraphixLab Media. All Rights Reserved.</p>
                 <div class="flex justify-center space-x-6 mt-4">
                     <a href="https://wa.me/918839189226?text=Hello%20GraphixLab%20Media!%20I%20visited%20your%20website%20and%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" class="hover:text-green-400 transform hover:scale-125 transition-transform"><i data-lucide="message-circle"></i></a>
                     <a href="https://www.instagram.com/graphixlabmedia/" target="_blank" class="hover:text-purple-400 transform hover:scale-125 transition-transform"><i data-lucide="instagram"></i></a>
@@ -360,65 +422,72 @@
     </div>
 
     <script>
+        // ===================================================================
+        // SCRIPT TO DISABLE RIGHT-CLICK AND DEV TOOLS
+        // ===================================================================
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function (e) {
+            if(e.keyCode == 123) { return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){ return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){ return false; }
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){ return false; }
+            if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){ return false; }
+        };
+
+        // ===================================================================
+        // MAIN WEBSITE FUNCTIONALITY
+        // ===================================================================
         lucide.createIcons();
         
         document.addEventListener('DOMContentLoaded', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('loaded');
-                const headlineLines = document.querySelectorAll('.headline-line');
-                if(headlineLines.length) {
-                    headlineLines.forEach(line => line.classList.add('visible'));
-                }
-                 const heroContent = document.querySelectorAll('#home .animate-on-scroll');
-                 heroContent.forEach(el => el.classList.add('is-visible'));
-            }, 2000); 
+            document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-            const cursorGlow = document.getElementById('cursor-glow');
-            function activateGlow() { cursorGlow.classList.add('active'); }
-            function deactivateGlow() { cursorGlow.classList.remove('active'); }
-            
-            function updateGlowPosition(e) {
-                const x = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
-                const y = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
-                if (x === undefined || y === undefined) return;
-                cursorGlow.style.display = 'block';
-                cursorGlow.style.left = x + 'px';
-                cursorGlow.style.top = y + 'px';
+            const allClients = [ 'NexusCorp', 'InnovateIQ', 'QuantumLeap', 'Stellar Solutions', 'Vertex Ventures', 'Apex Digital', 'Zenith Media', 'FusionWorks', 'Synergy Group', 'Momentum', 'Evolve AI', 'NextGen', 'Visionary', 'Pivot' ];
+            function shuffleArray(array) { for (let i = array.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [array[i], array[j]] = [array[j], array[i]]; } }
+            shuffleArray(allClients);
+            const selectedClients = allClients.slice(0, 5);
+            const clientLogosContainer = document.getElementById('client-logos-container');
+            if (clientLogosContainer) {
+                let clientHtml = '';
+                selectedClients.forEach((client, index) => { clientHtml += `<div class="client-logo animate-on-scroll" style="transition-delay: ${index * 100}ms;">${client}</div>`; });
+                clientLogosContainer.innerHTML = clientHtml;
             }
-
-            window.addEventListener('mousedown', activateGlow);
-            window.addEventListener('mouseup', deactivateGlow);
-            window.addEventListener('touchstart', (e) => { updateGlowPosition(e); activateGlow(); }, { passive: true });
-            window.addEventListener('touchend', deactivateGlow);
-            window.addEventListener('mousemove', updateGlowPosition);
-            window.addEventListener('touchmove', updateGlowPosition, { passive: true });
             
             const scrollElements = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                    } else {
-                        entry.target.classList.remove('is-visible');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
-            
             scrollElements.forEach(el => observer.observe(el));
+
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                document.querySelectorAll('.headline-line').forEach(line => line.classList.add('visible'));
+                document.querySelectorAll('#home .animate-on-scroll').forEach(el => el.classList.add('is-visible'));
+            }, 2000); 
+
+            const cursorGlow = document.getElementById('cursor-glow');
+            if (window.matchMedia('(pointer: fine)').matches) {
+                function activateGlow() { cursorGlow.classList.add('active'); }
+                function deactivateGlow() { cursorGlow.classList.remove('active'); }
+                function updateGlowPosition(e) { cursorGlow.style.display = 'block'; cursorGlow.style.left = e.clientX + 'px'; cursorGlow.style.top = e.clientY + 'px'; }
+                window.addEventListener('mousedown', activateGlow);
+                window.addEventListener('mouseup', deactivateGlow);
+                window.addEventListener('mousemove', updateGlowPosition);
+            }
 
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            document.querySelectorAll('.mobile-link').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-            });
+            document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('hidden')); });
 
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('bg-black/50', window.scrollY > 50);
-                header.classList.toggle('backdrop-blur-sm', window.scrollY > 50);
-            });
+            window.addEventListener('scroll', () => { header.classList.toggle('bg-black/50', window.scrollY > 50); header.classList.toggle('backdrop-blur-sm', window.scrollY > 50); });
             
             const form = document.getElementById('contact-form');
             form.addEventListener('submit', function(e) {
@@ -433,78 +502,78 @@
                 window.open(whatsappUrl, '_blank');
             });
 
-            // --- DISCOUNT & TIMER LOGIC ---
-            const basePrices = { starter: 1999, standard: 4999, premium: 7999 };
+            const basePrices = { starter: 1999, standard: 4999, premium: 9999, premium_plus: 14999 };
             const offerBanner = document.getElementById('offer-banner');
             const offerTextEl = document.getElementById('offer-text');
             const timerEl = document.getElementById('countdown-timer');
             let countdownInterval;
+            const allSocialPlans = ['starter', 'standard', 'premium', 'premium_plus'];
+            const phoneNumber = '918839189226';
 
             const updateTimer = (saleEndDate) => {
-                const now = new Date().getTime();
-                const distance = saleEndDate - now;
-
-                if (distance < 0) {
-                    clearInterval(countdownInterval);
-                    offerBanner.classList.add('hidden');
-                    return;
+                const distance = saleEndDate - new Date().getTime();
+                if (distance < 0) { clearInterval(countdownInterval); offerBanner.style.display = 'none'; return; }
+                const d = Math.floor(distance / (1000*60*60*24)), h = Math.floor((distance % (1000*60*60*24))/(1000*60*60)), m = Math.floor((distance % (1000*60*60))/(1000*60)), s = Math.floor((distance % (1000*60))/1000);
+                timerEl.innerHTML = `<div class="timer-box">${d}<span class="text-xs">d</span></div><div class="timer-box">${h}<span class="text-xs">h</span></div><div class="timer-box">${m}<span class="text-xs">m</span></div><div class="timer-box">${s}<span class="text-xs">s</span></div>`;
+            };
+            
+            const setWhatsAppLink = (elementId, message) => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
                 }
-
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                timerEl.innerHTML = `
-                    <div class="timer-box">${days}<span class="text-xs">d</span></div>
-                    <div class="timer-box">${hours}<span class="text-xs">h</span></div>
-                    <div class="timer-box">${minutes}<span class="text-xs">m</span></div>
-                    <div class="timer-box">${seconds}<span class="text-xs">s</span></div>
-                `;
             };
 
             const applyDiscount = (plan, discount) => {
                 const newPrice = Math.round(basePrices[plan] * (1 - discount / 100));
                 document.getElementById(`original-price-${plan}`).innerHTML = `<s>₹${basePrices[plan].toLocaleString('en-IN')}</s>`;
                 document.getElementById(`price-${plan}`).innerHTML = `₹${newPrice.toLocaleString('en-IN')}`;
-                const badgeEl = document.getElementById(`badge-${plan}`);
-                badgeEl.innerHTML = `${discount}% OFF`;
-                badgeEl.classList.remove('hidden');
-                const message = `Hello! I'm interested in the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan with the ${discount}% discount.`;
-                document.getElementById(`link-${plan}`).href = `https://wa.me/918839189226?text=${encodeURIComponent(message)}`;
+                const planName = plan.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                const message = `Hello! I'm interested in the ${planName} Social Media plan with the ${discount}% discount.`;
+                setWhatsAppLink(`link-${plan}`, message);
             };
             
             const setOriginalPrice = (plan) => {
                  document.getElementById(`original-price-${plan}`).innerHTML = '';
-                 document.getElementById(`badge-${plan}`).classList.add('hidden');
                  document.getElementById(`price-${plan}`).innerHTML = `₹${basePrices[plan].toLocaleString('en-IN')}`;
-                 const message = `Hello! I'm interested in the ${plan.charAt(0).toUpperCase() + plan.slice(1)} plan.`;
-                 document.getElementById(`link-${plan}`).href = `https://wa.me/918839189226?text=${encodeURIComponent(message)}`;
+                 const planName = plan.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                 const message = `Hello! I'm interested in the ${planName} Social Media plan.`;
+                 setWhatsAppLink(`link-${plan}`, message);
             };
 
-            const now = new Date();
+            // --- Set Static WhatsApp Links ---
+            setWhatsAppLink('link-web-static', "Hello! I'm interested in the Static Site web development package.");
+            setWhatsAppLink('link-web-business', "Hello! I'm interested in the Business Site web development package.");
+            setWhatsAppLink('link-web-ecommerce', "Hello! I'd like to discuss the E-commerce / Custom web development package.");
+            setWhatsAppLink('link-web-enterprise', "Hello! I'd like to book a consultation for the Enterprise (Website + App) package.");
+            setWhatsAppLink('link-single-creative', "Hello! I'd like to request a single creative design (post/reel/video).");
+            setWhatsAppLink('link-tech-support', "Hello! I'd like to inquire about your Technical Support service.");
+
+            // --- Discount Logic ---
             const saleEndDate = new Date('2025-07-12T23:59:59');
             let activeDiscount = 0;
 
-            if (now <= saleEndDate) {
+            if (new Date() <= saleEndDate) {
                 activeDiscount = 30;
-                offerTextEl.innerHTML = 'LIMITED TIME OFFER: 30% OFF!';
+                offerTextEl.innerHTML = `LIMITED TIME OFFER: ${activeDiscount}% OFF ALL PLANS! Ends July 12th!`;
                 offerBanner.classList.remove('hidden');
+                updateTimer(saleEndDate);
                 countdownInterval = setInterval(() => updateTimer(saleEndDate), 1000);
             } else {
-                if (Math.random() < 0.5) {
-                    const discounts = [20, 30];
+                 if (Math.random() < 0.5) { // 50% chance of a surprise offer
+                    const discounts = [10, 20];
                     activeDiscount = discounts[Math.floor(Math.random() * discounts.length)];
                     offerTextEl.innerHTML = `SURPRISE! TAKE ${activeDiscount}% OFF TODAY!`;
-                    timerEl.classList.add('hidden');
+                    timerEl.style.display = 'none';
                     offerBanner.classList.remove('hidden');
-                }
+                 }
             }
 
             if (activeDiscount > 0) {
-                ['starter', 'standard', 'premium'].forEach(plan => applyDiscount(plan, activeDiscount));
+                allSocialPlans.forEach(plan => applyDiscount(plan, activeDiscount));
             } else {
-                ['starter', 'standard', 'premium'].forEach(plan => setOriginalPrice(plan));
+                offerBanner.style.display = 'none';
+                allSocialPlans.forEach(plan => setOriginalPrice(plan));
             }
         });
     </script>
