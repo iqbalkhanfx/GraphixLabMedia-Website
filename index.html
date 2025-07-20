@@ -4,35 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- =================================================================== -->
-    <!-- HYPER-AGGRESSIVE SEO & SOCIAL MEDIA META TAGS (BILASPUR + INDIA) -->
-    <!-- =================================================================== -->
     <title>#1 Social Media & Website Design Agency in Bilaspur | GraphixLab India</title>
     <meta name="description" content="Dominate your market with GraphixLab Media, Bilaspur's top agency for website design, social media management, and digital growth. We serve clients across India. Get your free quote today!">
     <meta name="keywords" content="social media agency bilaspur, website design bilaspur, best digital marketing company in bilaspur, affordable website development india, e-commerce website development, social media management india, graphic design services, video editing, mobile app development bilaspur, GraphixLab Media">
     
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://graphixlabmedia.pages.dev/">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://graphixlabmedia.pages.dev/">
     <meta property="og:title" content="#1 Social Media & Website Design Agency in Bilaspur | GraphixLab India">
     <meta property="og:description" content="Dominate your market with Bilaspur's top agency for website design, social media management, and digital growth. We serve clients across India.">
-    <meta property="og:image" content="https://graphixlabmedia.pages.dev/og-image.jpg"> <!-- IMPORTANT: Create and upload an image named 'og-image.jpg' to your project root -->
+    <meta property="og:image" content="https://graphixlabmedia.pages.dev/og-image.jpg">
     <meta property="og:site_name" content="GraphixLab Media">
     <meta property="og:locale" content="en_IN">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://graphixlabmedia.pages.dev/">
     <meta property="twitter:title" content="#1 Social Media & Website Design Agency in Bilaspur | GraphixLab India">
     <meta property="twitter:description" content="Dominate your market with Bilaspur's top agency for website design, social media management, and digital growth. We serve clients across India.">
-    <meta property="twitter:image" content="https://graphixlabmedia.pages.dev/og-image.jpg"> <!-- Use the same image as og:image -->
+    <meta property="twitter:image" content="https://graphixlabmedia.pages.dev/og-image.jpg">
 
-    <!-- =================================================================== -->
-    <!-- ADVANCED SCHEMA MARKUP (LocalBusiness + FAQ) for Dominant SEO -->
-    <!-- =================================================================== -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -130,21 +121,22 @@
     }
     </script>
     
-    <!-- Tailwind CSS and Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <!-- Custom Styles -->
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0A0216; color: #E0E0E0; overflow-x: hidden; }
         #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0A0216; display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.5s ease-out, visibility 0.5s ease-out; }
         #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .loader-text { font-size: clamp(2rem, 10vw, 5rem); font-weight: 900; color: white; opacity: 0; animation: textPulse 2s ease-in-out forwards; }
         @keyframes textPulse { 0% { opacity: 0; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } 100% { opacity: 0; transform: scale(0.95); } }
-        #cursor-glow { position: fixed; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%); pointer-events: none; z-index: 999; transform: translate(-50%, -50%) scale(1); transition: left 0.1s ease-out, top 0.1s ease-out, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none; }
+        
+        /* === CSS FIX: Removed laggy left/top transition for smoother movement === */
+        #cursor-glow { position: fixed; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(74, 0, 224, 0.15) 0%, rgba(74, 0, 224, 0) 70%); pointer-events: none; z-index: 999; transform: translate(-50%, -50%) scale(1); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); display: none; }
+        
         #cursor-glow.active { transform: translate(-50%, -50%) scale(1.4); }
         .text-gradient-logo { background: linear-gradient(120deg, #3b82f6, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .card-bg { background-color: rgba(26, 17, 51, 0.5); border: 1px solid rgba(139, 92, 246, 0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -571,15 +563,81 @@
                 document.querySelectorAll('#home .animate-on-scroll').forEach(el => el.classList.add('is-visible'));
             }, 2000); 
 
+            // === JAVASCRIPT FIX: Added touch events and improved logic for mobile ===
             const cursorGlow = document.getElementById('cursor-glow');
-            if (window.matchMedia('(pointer: fine)').matches) {
-                function activateGlow() { cursorGlow.classList.add('active'); }
-                function deactivateGlow() { cursorGlow.classList.remove('active'); }
-                function updateGlowPosition(e) { cursorGlow.style.display = 'block'; cursorGlow.style.left = e.clientX + 'px'; cursorGlow.style.top = e.clientY + 'px'; }
-                window.addEventListener('mousedown', activateGlow);
-                window.addEventListener('mouseup', deactivateGlow);
-                window.addEventListener('mousemove', updateGlowPosition);
+            const canHover = window.matchMedia('(hover: hover)').matches;
+
+            // Hide the glow by default on non-hover devices
+            if (!canHover) {
+                cursorGlow.style.display = 'none';
+            } else {
+                cursorGlow.style.display = 'block';
             }
+
+            function activateGlow() {
+                cursorGlow.classList.add('active');
+            }
+
+            function deactivateGlow() {
+                cursorGlow.classList.remove('active');
+                // On touch devices, hide the glow when the touch ends
+                if (!canHover) {
+                    setTimeout(() => {
+                        cursorGlow.style.display = 'none';
+                    }, 300); // Wait for the scale animation to finish
+                }
+            }
+
+            function updateGlowPosition(e) {
+                let x, y;
+                if (e.touches && e.touches.length > 0) {
+                    // Touch event
+                    x = e.touches[0].clientX;
+                    y = e.touches[0].clientY;
+                    cursorGlow.style.display = 'block'; // Make sure it's visible for touch
+                } else if (e.clientX !== undefined) {
+                    // Mouse event
+                    x = e.clientX;
+                    y = e.clientY;
+                } else {
+                    return; // Exit if no coordinates are available
+                }
+                // Use requestAnimationFrame for smoother performance
+                requestAnimationFrame(() => {
+                    cursorGlow.style.left = `${x}px`;
+                    cursorGlow.style.top = `${y}px`;
+                });
+            }
+
+            // Mouse Events
+            window.addEventListener('mousemove', updateGlowPosition);
+            window.addEventListener('mousedown', activateGlow);
+            window.addEventListener('mouseup', deactivateGlow);
+
+            // Touch Events
+            window.addEventListener('touchstart', (e) => {
+                activateGlow();
+                updateGlowPosition(e);
+            }, { passive: true });
+
+            window.addEventListener('touchmove', updateGlowPosition, { passive: true });
+            window.addEventListener('touchend', deactivateGlow);
+            window.addEventListener('touchcancel', deactivateGlow);
+            
+            // Hide cursor when it leaves the window (for mouse users)
+            document.body.addEventListener('mouseleave', () => {
+                if (canHover) {
+                    cursorGlow.style.display = 'none';
+                }
+            });
+            
+            // Show it again when it enters
+            document.body.addEventListener('mouseenter', () => {
+                if (canHover) {
+                    cursorGlow.style.display = 'block';
+                }
+            });
+            // === END OF JAVASCRIPT FIX ===
 
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
